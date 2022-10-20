@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/style.css">
 </head>
 
 <body>
@@ -14,14 +14,16 @@
         <p class="form_text">Выбери сложность</p>
         <div class="difficulty_rating">
             <input class="field-control" type="radio" id="difficulty1" name="difficulty" value="1" />
-            <label for="difficulty1" class="difficulty_choice" title="text">1</label>
+            <label for="difficulty1" class="difficulty_choice">1</label>
             <input class="field-control" type="radio" id="difficulty2" name="difficulty" value="2" />
-            <label for="difficulty2" class="difficulty_choice" title="text">2</label>
+            <label for="difficulty2" class="difficulty_choice">2</label>
             <input class="field-control" type="radio" id="difficulty3" name="difficulty" value="3" />
-            <label for="difficulty3" class="difficulty_choice" title="text">3</label>
+            <label for="difficulty3" class="difficulty_choice">3</label>
         </div>
         <button class="button_start">Старт</button>
+        <div class="start_error hidden">Необходимо выбрать сложность</div>
     </form>
+    <script src="./script.js"></script>
 </body>
 
 </html>
