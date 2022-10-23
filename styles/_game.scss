@@ -1,0 +1,66 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  row-gap: 35px;
+}
+
+.game-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.game-time {
+  color: #ffff;
+  font-family: "StratosSkyeng";
+  font-style: normal;
+  font-weight: 400;
+  width: 155px;
+}
+
+.game-wrapper {
+  display: flex;
+  flex-direction: row;
+  column-gap: 57px;
+  justify-content: flex-end;
+  margin-right: 14px;
+  height: 33px;
+}
+
+.game-min,
+.game-sek {
+  font-size: 16px;
+  line-height: 32px;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #ffffff;
+}
+
+.game-timer {
+  font-size: 64px;
+  line-height: 72px;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.game-btn {
+  margin-top: 40px;
+}
+
+.game-field {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-around;
+  width: 1034px;
+}
+
+.game-item {
+  width: 95px;
+  height: 133px;
+}
+
+.game-item:hover {
+  cursor: pointer;
+}
