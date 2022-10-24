@@ -8,7 +8,7 @@
     "start": "npx http-server -c-1",
     "format": "prettier --write .",
     "lint:js": "eslint './**.js'",
-    "lint:css": "stylelint './styles/**.css'",
+    "lint:css": "stylelint 'styles/**.css'",
     "lint": "npm run lint:js && npm run lint:css"
   },
   "repository": {
