@@ -3,3 +3,4 @@ node_modules/
 .prettierrc.yml
 .stylelintrc.yml
 .prettierignore
+styles\linters and formatters\.eslintignore

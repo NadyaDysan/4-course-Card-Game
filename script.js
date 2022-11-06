@@ -1,6 +1,5 @@
 const form = document.querySelector(".form");
 const formFieldInputs = document.querySelectorAll(".field-control");
-const startButton = document.querySelectorAll(".button_start");
 const startError = document.querySelector(".start_error");
 
 const game = document.querySelector(".game");
@@ -9,7 +8,7 @@ const cards = document.querySelectorAll(".cards");
 function getFieldValue() {
   for (const formFieldInput of formFieldInputs) {
     if (formFieldInput.checked) {
-      difficulty = formFieldInput.value;
+      let difficulty = formFieldInput.value;
       localStorage.setItem("difficulty", difficulty);
       console.log(difficulty);
     } else if (
