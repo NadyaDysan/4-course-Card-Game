@@ -49,12 +49,14 @@
 }
 
 .game-field {
-  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 15px;
-  justify-content: space-around;
+  justify-content: center;
   width: 1034px;
+  display: grid;
+  align-content: center;
+  justify-items: center;
 }
 
 .cards {
@@ -66,147 +68,147 @@
   cursor: pointer;
 }
 
-.card-1 {
+.card-0 {
   background: url("./img/cards/0.png");
 }
 
-.card-2 {
+.card-1 {
   background: url("./img/cards/1.png");
 }
 
-.card-3 {
+.card-2 {
   background: url("./img/cards/2.png");
 }
 
-.card-4 {
+.card-3 {
   background: url("./img/cards/3.png");
 }
 
-.card-5 {
+.card-4 {
   background: url("./img/cards/4.png");
 }
 
-.card-6 {
+.card-5 {
   background: url("./img/cards/5.png");
 }
 
-.card-7 {
+.card-6 {
   background: url("./img/cards/6.png");
 }
 
-.card-8 {
+.card-7 {
   background: url("./img/cards/7.png");
 }
 
-.card-9 {
+.card-8 {
   background: url("./img/cards/8.png");
 }
 
-.card-10 {
+.card-9 {
   background: url("./img/cards/9.png");
 }
 
-.card-11 {
+.card-10 {
   background: url("./img/cards/10.png");
 }
 
-.card-12 {
+.card-11 {
   background: url("./img/cards/11.png");
 }
 
-.card-13 {
+.card-12 {
   background: url("./img/cards/12.png");
 }
 
-.card-14 {
+.card-13 {
   background: url("./img/cards/13.png");
 }
 
-.card-15 {
+.card-14 {
   background: url("./img/cards/14.png");
 }
 
-.card-16 {
+.card-15 {
   background: url("./img/cards/15.png");
 }
 
-.card-17 {
+.card-16 {
   background: url("./img/cards/16.png");
 }
 
-.card-18 {
+.card-17 {
   background: url("./img/cards/17.png");
 }
 
-.card-19 {
+.card-18 {
   background: url("./img/cards/18.png");
 }
 
-.card-20 {
+.card-19 {
   background: url("./img/cards/19.png");
 }
 
-.card-21 {
+.card-20 {
   background: url("./img/cards/20.png");
 }
 
-.card-22 {
+.card-21 {
   background: url("./img/cards/21.png");
 }
 
-.card-23 {
+.card-22 {
   background: url("./img/cards/22.png");
 }
 
-.card-24 {
+.card-23 {
   background: url("./img/cards/23.png");
 }
 
-.card-25 {
+.card-24 {
   background: url("./img/cards/24.png");
 }
 
-.card-26 {
+.card-25 {
   background: url("./img/cards/25.png");
 }
 
-.card-27 {
+.card-26 {
   background: url("./img/cards/26.png");
 }
 
-.card-28 {
+.card-27 {
   background: url("./img/cards/27.png");
 }
 
-.card-29 {
+.card-28 {
   background: url("./img/cards/28.png");
 }
 
-.card-30 {
+.card-29 {
   background: url("./img/cards/29.png");
 }
 
-.card-31 {
+.card-30 {
   background: url("./img/cards/30.png");
 }
 
-.card-32 {
+.card-31 {
   background: url("./img/cards/31.png");
 }
 
-.card-33 {
+.card-32 {
   background: url("./img/cards/32.png");
 }
 
-.card-34 {
+.card-33 {
   background: url("./img/cards/33.png");
 }
 
-.card-35 {
+.card-34 {
   background: url("./img/cards/34.png");
 }
 
-.card-36 {
+.card-35 {
   background: url("./img/cards/35.png");
 }
 
@@ -321,6 +323,10 @@ body {
 .start_error {
   color: crimson;
   margin-top: 8px;
+}
+
+.cards {
+  border-radius: 4px;
 }
 
 .cards_cover {

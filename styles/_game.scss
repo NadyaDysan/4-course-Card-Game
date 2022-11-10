@@ -48,12 +48,14 @@
 }
 
 .game-field {
-  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 15px;
-  justify-content: space-around;
+  justify-content: center;
   width: 1034px;
+  display: grid;
+  align-content: center;
+  justify-items: center;
 }
 
 .cards {
