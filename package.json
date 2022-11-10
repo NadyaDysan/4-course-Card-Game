@@ -1,0 +1,35 @@
+{
+  "name": "4.1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx http-server -c-1",
+    "format": "prettier --write .",
+    "lint:js": "eslint './**.js'",
+    "lint:css": "stylelint './styles/**.css'",
+    "lint": "npm run lint:js && npm run lint:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NadyaDysan/4-course-Card-Game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NadyaDysan/4-course-Card-Game/issues"
+  },
+  "homepage": "https://github.com/NadyaDysan/4-course-Card-Game#readme",
+  "devDependencies": {
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "stylelint": "^14.14.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^29.0.0",
+    "stylelint-prettier": "^2.0.0"
+  }
+}
