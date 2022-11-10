@@ -1,167 +1,129 @@
+@import "game";
+@import "cards-bg";
+@import "vars";
+
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 @font-face {
-    font-family: 'StratosSkyeng';
-    src: url('fonts/Web fonts/stratosskyengweb-regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "StratosSkyeng";
+  src: url("fonts/Web fonts/stratosskyengweb-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
-    font-family: 'StratosSkyeng';
-    background-color: #2f70b5;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  font-family: "StratosSkyeng";
+  background-color: $backgroundColor;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .field-control {
-    position: absolute;
-    top: -9999px;
+  position: absolute;
+  top: -9999px;
 
-    &:checked+.difficulty_choice {
-        background: #0080C1;
-        color: #FFFFFF;
-        box-shadow: inset 0 0 0 3px #FFFFFF;
-    }
+  &:checked + .difficulty_choice {
+    background: $checkedDifficulty;
+    color: $white;
+    box-shadow: inset 0 0 0 3px $white;
+  }
 }
 
 .form {
-    width: 480px;
-    height: 459px;
-    background: #C2F5FF;
-    border-radius: 12px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    align-content: center;
-    text-align: center;
+  width: 480px;
+  height: 459px;
+  background: $formBackground;
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
 }
 
 .difficulty_rating {
-    display: flex;
-    align-content: center;
-    align-items: center;
+  display: flex;
+  align-content: center;
+  align-items: center;
 }
 
 .form_text {
-    font-weight: 400;
-    font-size: 40px;
-    color: #004980;
-    max-width: 208px;
+  font-weight: 400;
+  font-size: 40px;
+  color: $textColor;
+  max-width: 208px;
 }
 
 .difficulty_choice {
-    width: 98px;
-    height: 98px;
-    margin-top: 48px;
-    background-color: #FFFFFF;
-    font-weight: 400;
-    font-size: 64px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #0080C1;
-    justify-content: center;
-    border-radius: 12px;
-    transition: all 0.5s ease;
+  width: 98px;
+  height: 98px;
+  margin-top: 48px;
+  background-color: $white;
+  font-weight: 400;
+  font-size: 64px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: $checkedDifficulty;
+  justify-content: center;
+  border-radius: 12px;
+  transition: all 0.5s ease;
 
-
-    &:hover {
-        background: #0080C1;
-        color: #FFFFFF;
-        box-shadow: inset 0 0 0 3px #FFFFFF;
-    }
-
+  &:hover {
+    background: $checkedDifficulty;
+    color: $white;
+    box-shadow: inset 0 0 0 3px $white;
+  }
 }
-
 
 .difficulty_choice:nth-of-type(1),
 .difficulty_choice:nth-of-type(2) {
-    margin-right: 24px;
+  margin-right: 24px;
 }
 
-.button_start {
-    width: 246px;
-    height: 50px;
-    margin-top: 67px;
-    border: none;
-    background: #7AC100;
-    border-radius: 12px;
-    font-family: 'StratosSkyeng';
-    font-size: 24px;
-    color: #FFFFFF;
-    transition: all 0.5s ease;
+.button {
+  width: 246px;
+  height: 50px;
+  margin-top: 67px;
+  border: none;
+  background: $buttonColor;
+  border-radius: 12px;
+  font-family: "StratosSkyeng";
+  font-size: 24px;
+  color: $white;
+  transition: all 0.5s ease;
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 
-    &:hover {
-        background-color: #3f5b0e;
-    }
+  &:hover {
+    background-color: $buttonHover;
+  }
 
-    &:active {
-        background: #7AC100;
-        color: #FFFFFF;
-    }
+  &:active {
+    background: $buttonColor;
+    color: $white;
+  }
 }
 
 .start_error {
-    color: crimson;
-    margin-top: 8px;
+  color: $error;
+  margin-top: 8px;
 }
 
-@import 'game';
-@import 'cards-bg';
-
-$blue: #1950b5;
-$ligthblue: #c2f5ff;
-$darkblue: #004980;
-$mediumblue: #0080c1;
-$green: #7ac100;
-
-.cards {
-    margin-left: 25vw;
-    margin-top: 10vh;
-    background: $blue;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.btn {
-    width: 246px;
-    height: 50px;
-    background: $green;
-    border-radius: 12px;
-    border: 0px;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 32px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-    color: #ffffff;
-    justify-content: center;
-}
-
-.btn:hover{
-    cursor: pointer;
-}
-
-.hiden {
-    display: none;
-}
-
-.defaultCard{
-    background: url('./img/cards/card-bg.jpg');
+.cards_cover {
+  background: url("./img/cards/card-bg.jpg");
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
