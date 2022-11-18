@@ -333,6 +333,15 @@ body {
   background: url("./img/cards/card-bg.jpg");
 }
 
+.play_time {
+  padding-top: 10px;
+  font-size: 64px;
+}
+.play_time_text {
+  padding-top: 28px;
+  font-size: 24px;
+}
+
 .hidden {
   display: none;
 }/*# sourceMappingURL=style.css.map */
