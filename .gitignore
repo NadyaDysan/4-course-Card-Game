@@ -4,3 +4,4 @@ node_modules/
 .stylelintrc.yml
 .prettierignore
 styles\linters and formatters\.eslintignore
+tsconfig.json
