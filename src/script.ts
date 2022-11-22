@@ -1,3 +1,5 @@
+import './styles/style.scss';
+
 const form = document.querySelector(".form");
 const gameField = document.querySelector(".game-field");
 const formFieldInputs = document.querySelectorAll(".field-control");
@@ -7,6 +9,8 @@ const difficultyRating = document.querySelector(".difficulty_rating");
 const playTimeForm = document.querySelector(".play_time_form");
 const playTime = document.querySelector(".play_time");
 const ButtonStart = document.querySelector(".button_start") as HTMLElement;
+
+import startTimer from './timer.ts';
 
 const game = document.querySelector(".game");
 
