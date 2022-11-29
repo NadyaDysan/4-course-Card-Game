@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./styles/style.css">
 </head>
 
 <body>
@@ -19,6 +18,10 @@
             <label for="difficulty2" class="difficulty_choice">2</label>
             <input class="field-control" type="radio" id="difficulty3" name="difficulty" value="3" />
             <label for="difficulty3" class="difficulty_choice">3</label>
+        </div>
+        <div class="play_time_form hidden">
+            <p class="play_time_text">Затраченное время:</p>
+            <div class="play_time"></div>
         </div>
         <button class="button_start button">Старт</button>
         <div class="start_error hidden">Необходимо выбрать сложность</div>
@@ -43,8 +46,6 @@
     </div>
 </div>
 
-    <script src="./script.js"></script>
-    <script src="./timer.js"></script>
 </body>
 
 </html>
