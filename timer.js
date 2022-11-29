@@ -1,4 +1,4 @@
-let timerDisplay = document.querySelector('.timer');
+const timerDisplay = document.querySelector('.timer');
 let startTime, updatedTime, difference, tInterval, savedTime;
 let paused = 0;
 let running = 0;
