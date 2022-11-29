@@ -289,7 +289,6 @@ function YouWin() {
 
 function YouFailed() {
   game?.classList.add("hidden");
-  // body.setAttribute("style", "opacity: 0.5");
   form?.classList.remove("hidden");
   playTimeForm?.classList.remove("hidden");
   difficultyRating?.classList.add("hidden");
