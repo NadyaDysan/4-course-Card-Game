@@ -1,30 +1,33 @@
 import './styles/style.scss';
+import { startTimer, timerDisplay } from './timer';
 
 const form = document.querySelector(".form");
 const gameField = document.querySelector(".game-field");
-const formFieldInputs = document.querySelectorAll(".field-control");
+
+const formFieldInputs: any = document.querySelectorAll(".field-control");
 const startError = document.querySelector(".start_error");
+
 const FormText = document.querySelector(".form_text") as HTMLElement;
 const difficultyRating = document.querySelector(".difficulty_rating");
 const playTimeForm = document.querySelector(".play_time_form");
-const playTime = document.querySelector(".play_time");
-const ButtonStart = document.querySelector(".button_start") as HTMLElement;
 
-import startTimer from './timer.ts';
+const playTime = document.querySelector(".play_time") as HTMLDivElement;
+const ButtonStart = document.querySelector(".button_start") as HTMLElement;
 
 const game = document.querySelector(".game");
 
-let chosenDifficulty = localStorage.getItem("difficulty"); // на самом деле она меняется
+// eslint-disable-next-line prefer-const
+let chosenDifficulty = Number(localStorage.getItem("difficulty")); 
 
 function getFieldValue() {
-  for (const formFieldInput of formFieldInputs as any) {
+  for (const formFieldInput of formFieldInputs) {
     if (formFieldInput.checked) {
       const difficulty = formFieldInput.value;
       localStorage.setItem("difficulty", difficulty);
       console.log(chosenDifficulty);
       console.log(difficulty);
     } else if (
-      !formFieldInputs[0].checked && // предлагается решить эту ошибку прописав "as HTMLInputElement" в строке с указанием переменной (4-я), но у меня тогда возникает другая ошибка, т.к. это массив. Если вводить querySelectorAll<HTMLElement>, то всё равно ошибка остаётся
+      !formFieldInputs[0].checked &&
       !formFieldInputs[1].checked &&
       !formFieldInputs[2].checked
     ) {
@@ -195,7 +198,7 @@ const cardsWon = [];
 
 function createGameField() {
   cardArray.sort(() => 0.5 - Math.random());
-  cardArray.length = (chosenDifficulty * 6) / 2; // если я вношу сбоку ": number", то появляется больше ошибок. также у меня не может быть ноль, т.к. в функции getFieldValue() есть check на это
+  cardArray.length = (chosenDifficulty * 6) / 2;
   const duplicateCardArray = cardArray.concat(cardArray.slice());
   Array.prototype.push.apply(newCardArray, duplicateCardArray);
   newCardArray.sort(() => 0.5 - Math.random());
@@ -212,7 +215,7 @@ function createGameField() {
   for (let i = 0; i < newCardArray.length; i++) {
     const card = document.createElement("div");
     card.setAttribute("class", `cards card-${newCardArray[i]["name"]}`);
-    card.setAttribute("data-id", i);
+    card.setAttribute("data-id", String(i));
     card.addEventListener("click", flipCard);
     gameField?.appendChild(card);
 
@@ -270,7 +273,7 @@ function YouWin() {
 
   const formImage = document.createElement("img");
   formImage.classList.add("form_img");
-  formImage.setAttribute("src", "./styles/img/won_pic.svg");
+  formImage.setAttribute("src", ".src/styles/img/won_pic.svg");
   form?.insertBefore(formImage, FormText);
 
   ButtonStart.addEventListener("click", (event) => {
