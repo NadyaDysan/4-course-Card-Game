@@ -27,8 +27,6 @@ function getFieldValue() {
     if (formFieldInput.checked) {
       const difficulty = formFieldInput.value;
       localStorage.setItem('difficulty', difficulty);
-      console.log(chosenDifficulty);
-      console.log(difficulty);
     } else if (
       !formFieldInputs[0].checked &&
       !formFieldInputs[1].checked &&
@@ -205,7 +203,6 @@ function createGameField() {
   const duplicateCardArray = cardArray.concat(cardArray.slice());
   Array.prototype.push.apply(newCardArray, duplicateCardArray);
   newCardArray.sort(() => 0.5 - Math.random());
-  console.log(newCardArray);
 
   if (chosenDifficulty == 1) {
     gameField?.setAttribute('style', 'grid-template-columns: repeat(3, 6rem)');
@@ -233,7 +230,8 @@ function flipCard(this: any) {
   const cardId = this.getAttribute('data-id');
   cardsChosen.push(newCardArray[cardId].name);
   cardsChosenId.push(cardId);
-  this.classList.add(`card-${cardId}`);
+  // this.setAttribute('src', newCardArray[cardId].img)
+  this.classList.add(`card-${newCardArray.cardId}`);
   this.classList.remove(`cards_cover`);
   if (cardsChosen.length === 2) {
     setTimeout(checkForMatch, 500);
@@ -245,7 +243,6 @@ function checkForMatch() {
   const optionOneId = cardsChosenId[0];
   const optionTwoId = cardsChosenId[1];
   if (cardsChosen[0] === cardsChosen[1]) {
-    YouWin();
     cards[optionOneId].setAttribute('style', 'background: none');
     cards[optionTwoId].setAttribute('style', 'background: none');
     cardsWon.push(cardsChosen);
@@ -256,11 +253,13 @@ function checkForMatch() {
   }
   cardsChosen = [];
   cardsChosenId = [];
+  if (cardsWon.length === newCardArray.length/2) {
+    YouWin();
+  }
 }
 
 function YouWin() {
   game?.classList.add('hidden');
-  // body.setAttribute("style", "opacity: 0.5");
   form?.classList.remove('hidden');
   playTimeForm?.classList.remove('hidden');
   difficultyRating?.classList.add('hidden');
@@ -268,7 +267,7 @@ function YouWin() {
     FormText.textContent = 'Вы выиграли!';
     FormText.style.maxWidth = '256px';
   }
-  playTime.textContent = timerDisplay?.textContent; // вообще не знаю, как это решить, т.к. до перехода на ts в js файле выдавало тоже ошибку, что undentified, т.к. переменная из другого js файла timer.js
+  playTime.textContent = timerDisplay?.textContent;
   if (ButtonStart != undefined) {
     ButtonStart.textContent = 'Играть снова';
     ButtonStart.style.marginTop = '40px';
@@ -281,15 +280,8 @@ function YouWin() {
 
   ButtonStart.addEventListener('click', (event) => {
     event.preventDefault();
-    difficultyRating?.classList.remove('hidden');
-    FormText.textContent = 'Выбери сложность';
     formImage.classList.add('hidden');
-    playTimeForm?.classList.add('hidden');
-    ButtonStart.textContent = 'Старт';
-    ButtonStart.style.marginTop = '64px';
-    FormText.style.maxWidth = '208px';
-
-    return form;
+    generateStartScreen();
   });
 }
 
@@ -302,7 +294,7 @@ function YouFailed() {
     FormText.textContent = 'Вы проиграли!';
     FormText.style.maxWidth = '256px';
   }
-  playTime.textContent = timerDisplay?.textContent; // вообще не знаю, как это решить, т.к. до перехода на ts в js файле выдавало тоже ошибку, что undentified, т.к. переменная из другого js файла timer.js
+  playTime.textContent = timerDisplay?.textContent;
   if (ButtonStart != undefined) {
     ButtonStart.textContent = 'Играть снова';
     ButtonStart.style.marginTop = '40px';
@@ -315,14 +307,27 @@ function YouFailed() {
 
   ButtonStart.addEventListener('click', (event) => {
     event.preventDefault();
-    difficultyRating?.classList.remove('hidden');
-    FormText.textContent = 'Выбери сложность';
     formImage.classList.add('hidden');
-    playTimeForm?.classList.add('hidden');
-    ButtonStart.textContent = 'Старт';
-    ButtonStart.style.marginTop = '64px';
-    FormText.style.maxWidth = '208px';
-
-    return form;
+    generateStartScreen();
   });
 }
+
+const buttonGame = document.querySelector('.button_game');
+
+buttonGame.addEventListener('click', (event) => {
+  event.preventDefault();
+  game?.classList.add('hidden');
+  form?.classList.remove('hidden');
+  playTimeForm?.classList.remove('hidden');
+  difficultyRating?.classList.add('hidden');
+  generateStartScreen();
+});
+
+const generateStartScreen = () => {
+  difficultyRating?.classList.remove('hidden');
+  FormText.textContent = 'Выбери сложность';
+  playTimeForm?.classList.add('hidden');
+  ButtonStart.textContent = 'Старт';
+  ButtonStart.style.marginTop = '64px';
+  FormText.style.maxWidth = '208px';
+};
