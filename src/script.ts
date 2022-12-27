@@ -39,11 +39,15 @@ function getFieldValue() {
 
 form?.addEventListener('submit', (event) => {
   event.preventDefault();
+  startGame();
+});
+
+function startGame() {
   getFieldValue();
   form.classList.add('hidden');
   game?.classList.remove('hidden');
   createGameField();
-});
+}
 
 const cardArray = [
   {
@@ -191,7 +195,7 @@ const cardArray = [
     img: './img/cards/35.png',
   },
 ];
-const newCardArray: any = []; /* eslint-disable-line */
+let newCardArray: any = []; /* eslint-disable-line */
 
 let cardsChosen: any = []; /* eslint-disable-line */
 let cardsChosenId: any = []; /* eslint-disable-line */
@@ -230,7 +234,6 @@ function flipCard(this: any) {
   const cardId = this.getAttribute('data-id');
   cardsChosen.push(newCardArray[cardId].name);
   cardsChosenId.push(cardId);
-  // this.setAttribute('src', newCardArray[cardId].img)
   this.classList.add(`card-${newCardArray.cardId}`);
   this.classList.remove(`cards_cover`);
   if (cardsChosen.length === 2) {
@@ -253,7 +256,7 @@ function checkForMatch() {
   }
   cardsChosen = [];
   cardsChosenId = [];
-  if (cardsWon.length === newCardArray.length/2) {
+  if (cardsWon.length === newCardArray.length / 2) {
     YouWin();
   }
 }
@@ -277,6 +280,10 @@ function YouWin() {
   formImage.classList.add('form_img');
   formImage.setAttribute('src', wonPic);
   form?.insertBefore(formImage, FormText);
+
+  while (gameField.firstChild) {
+    gameField.removeChild(gameField.lastChild);
+  }
 
   ButtonStart.addEventListener('click', (event) => {
     event.preventDefault();
@@ -305,6 +312,12 @@ function YouFailed() {
   formImage.setAttribute('src', failPic);
   form?.insertBefore(formImage, FormText);
 
+  while (gameField.firstChild) {
+    gameField.removeChild(gameField.lastChild);
+  }
+
+  // newCardArray = [];
+
   ButtonStart.addEventListener('click', (event) => {
     event.preventDefault();
     formImage.classList.add('hidden');
@@ -324,10 +337,15 @@ buttonGame.addEventListener('click', (event) => {
 });
 
 const generateStartScreen = () => {
+  localStorage.clear();
   difficultyRating?.classList.remove('hidden');
   FormText.textContent = 'Выбери сложность';
   playTimeForm?.classList.add('hidden');
   ButtonStart.textContent = 'Старт';
   ButtonStart.style.marginTop = '64px';
   FormText.style.maxWidth = '208px';
+
+  ButtonStart.addEventListener('click', () => {
+    startGame();
+  });
 };
