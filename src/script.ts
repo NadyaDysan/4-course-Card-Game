@@ -1,5 +1,5 @@
 import './styles/style.scss';
-import {startTimer, timerDisplay} from './timer';
+import {startTimer, timerDisplay, resetTimer} from './timer';
 
 const form = document.querySelector('.form');
 const gameField = document.querySelector('.game-field');
@@ -17,7 +17,7 @@ const ButtonStart = document.querySelector('.button_start') as HTMLElement;
 const game = document.querySelector('.game');
 
 // eslint-disable-next-line prefer-const
-let chosenDifficulty = Number(localStorage.getItem('difficulty'));
+let chosenDifficulty = 0;
 
 import wonPic from './styles/img/won_pic.svg';
 import failPic from './styles/img/fail_pic.svg';
@@ -25,10 +25,8 @@ import failPic from './styles/img/fail_pic.svg';
 function getFieldValue() {
   for (const formFieldInput of formFieldInputs) {
     if (formFieldInput.checked) {
-      const difficulty = formFieldInput.value;
-      localStorage.setItem('difficulty', difficulty);
-      console.log(chosenDifficulty);
-      console.log(difficulty);
+      chosenDifficulty = formFieldInput.value;
+      localStorage.setItem('difficulty', chosenDifficulty.toString());
     } else if (
       !formFieldInputs[0].checked &&
       !formFieldInputs[1].checked &&
@@ -39,13 +37,17 @@ function getFieldValue() {
   }
 }
 
-form?.addEventListener('submit', (event) => {
+ButtonStart?.addEventListener('click', (event) => {
   event.preventDefault();
+  startGame();
+});
+
+function startGame() {
   getFieldValue();
   form.classList.add('hidden');
   game?.classList.remove('hidden');
   createGameField();
-});
+}
 
 const cardArray = [
   {
@@ -193,19 +195,15 @@ const cardArray = [
     img: './img/cards/35.png',
   },
 ];
-const newCardArray: any = []; /* eslint-disable-line */
+let newCardArray: any = []; /* eslint-disable-line */
 
 let cardsChosen: any = []; /* eslint-disable-line */
 let cardsChosenId: any = []; /* eslint-disable-line */
 const cardsWon = [];
 
 function createGameField() {
-  cardArray.sort(() => 0.5 - Math.random());
-  cardArray.length = (chosenDifficulty * 6) / 2;
-  const duplicateCardArray = cardArray.concat(cardArray.slice());
-  Array.prototype.push.apply(newCardArray, duplicateCardArray);
-  newCardArray.sort(() => 0.5 - Math.random());
-  console.log(newCardArray);
+  const newPairsArray = [...cardArray].sort(() => 0.5 - Math.random()).slice(0, (chosenDifficulty * 6) / 2);
+  newCardArray = [...newPairsArray, ...newPairsArray].sort(() => 0.5 - Math.random());
 
   if (chosenDifficulty == 1) {
     gameField?.setAttribute('style', 'grid-template-columns: repeat(3, 6rem)');
@@ -233,7 +231,7 @@ function flipCard(this: any) {
   const cardId = this.getAttribute('data-id');
   cardsChosen.push(newCardArray[cardId].name);
   cardsChosenId.push(cardId);
-  this.classList.add(`card-${cardId}`);
+  this.classList.add(`card-${newCardArray.cardId}`);
   this.classList.remove(`cards_cover`);
   if (cardsChosen.length === 2) {
     setTimeout(checkForMatch, 500);
@@ -245,7 +243,6 @@ function checkForMatch() {
   const optionOneId = cardsChosenId[0];
   const optionTwoId = cardsChosenId[1];
   if (cardsChosen[0] === cardsChosen[1]) {
-    YouWin();
     cards[optionOneId].setAttribute('style', 'background: none');
     cards[optionTwoId].setAttribute('style', 'background: none');
     cardsWon.push(cardsChosen);
@@ -256,11 +253,13 @@ function checkForMatch() {
   }
   cardsChosen = [];
   cardsChosenId = [];
+  if (cardsWon.length === newCardArray.length / 2) {
+    YouWin();
+  }
 }
 
 function YouWin() {
   game?.classList.add('hidden');
-  // body.setAttribute("style", "opacity: 0.5");
   form?.classList.remove('hidden');
   playTimeForm?.classList.remove('hidden');
   difficultyRating?.classList.add('hidden');
@@ -268,7 +267,7 @@ function YouWin() {
     FormText.textContent = 'Вы выиграли!';
     FormText.style.maxWidth = '256px';
   }
-  playTime.textContent = timerDisplay?.textContent; // вообще не знаю, как это решить, т.к. до перехода на ts в js файле выдавало тоже ошибку, что undentified, т.к. переменная из другого js файла timer.js
+  playTime.textContent = timerDisplay?.textContent;
   if (ButtonStart != undefined) {
     ButtonStart.textContent = 'Играть снова';
     ButtonStart.style.marginTop = '40px';
@@ -279,18 +278,17 @@ function YouWin() {
   formImage.setAttribute('src', wonPic);
   form?.insertBefore(formImage, FormText);
 
+  while (gameField.firstChild) {
+    gameField.removeChild(gameField.lastChild);
+  }
+
   ButtonStart.addEventListener('click', (event) => {
     event.preventDefault();
-    difficultyRating?.classList.remove('hidden');
-    FormText.textContent = 'Выбери сложность';
     formImage.classList.add('hidden');
-    playTimeForm?.classList.add('hidden');
-    ButtonStart.textContent = 'Старт';
-    ButtonStart.style.marginTop = '64px';
-    FormText.style.maxWidth = '208px';
-
-    return form;
+    generateStartScreen();
   });
+
+  resetTimer();
 }
 
 function YouFailed() {
@@ -302,7 +300,7 @@ function YouFailed() {
     FormText.textContent = 'Вы проиграли!';
     FormText.style.maxWidth = '256px';
   }
-  playTime.textContent = timerDisplay?.textContent; // вообще не знаю, как это решить, т.к. до перехода на ts в js файле выдавало тоже ошибку, что undentified, т.к. переменная из другого js файла timer.js
+  playTime.textContent = timerDisplay?.textContent;
   if (ButtonStart != undefined) {
     ButtonStart.textContent = 'Играть снова';
     ButtonStart.style.marginTop = '40px';
@@ -313,16 +311,38 @@ function YouFailed() {
   formImage.setAttribute('src', failPic);
   form?.insertBefore(formImage, FormText);
 
+  while (gameField.firstChild) {
+    gameField.removeChild(gameField.lastChild);
+  }
+
   ButtonStart.addEventListener('click', (event) => {
     event.preventDefault();
-    difficultyRating?.classList.remove('hidden');
-    FormText.textContent = 'Выбери сложность';
     formImage.classList.add('hidden');
-    playTimeForm?.classList.add('hidden');
-    ButtonStart.textContent = 'Старт';
-    ButtonStart.style.marginTop = '64px';
-    FormText.style.maxWidth = '208px';
-
-    return form;
+    generateStartScreen();
   });
+
+  resetTimer();
 }
+
+const buttonGame = document.querySelector('.button_game');
+
+buttonGame.addEventListener('click', (event) => {
+  event.preventDefault();
+  game?.classList.add('hidden');
+  form?.classList.remove('hidden');
+  playTimeForm?.classList.remove('hidden');
+  difficultyRating?.classList.add('hidden');
+  gameField.innerHTML = '';
+  generateStartScreen();
+  resetTimer();
+});
+
+const generateStartScreen = () => {
+  localStorage.clear();
+  difficultyRating?.classList.remove('hidden');
+  FormText.textContent = 'Выбери сложность';
+  playTimeForm?.classList.add('hidden');
+  ButtonStart.textContent = 'Старт';
+  ButtonStart.style.marginTop = '64px';
+  FormText.style.maxWidth = '208px';
+};
