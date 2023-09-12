@@ -14,23 +14,6 @@ export function startTimer() {
   }
 }
 
-// function pauseTimer() {
-//     if (!difference) {
-//     } else if (!paused) {
-//         clearInterval(tInterval);
-//         savedTime = difference;
-//         paused = 1;
-//         running = 0;
-
-//         startTimerButton.classList.remove('lighter');
-//         pauseTimerButton.classList.add('lighter');
-//         startTimerButton.style.cursor = 'pointer';
-//         pauseTimerButton.style.cursor = 'auto';
-//     } else {
-//         startTimer();
-//     }
-// }
-
 export function resetTimer() {
   clearInterval(tInterval);
   savedTime = 0;
