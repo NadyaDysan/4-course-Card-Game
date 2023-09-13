@@ -5,12 +5,12 @@
   "main": "script.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "start": "node ./dist/application.js",
+    "start": "webpack-dev-server --open",
     "format": "prettier --write .",
     "lint:js": "eslint \"**.js\"",
     "lint:css": "stylelint './src/styles/**.css'",
     "lint": "npm run lint:js && npm run lint:css",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "lint:ts": "tsc --noEmit"
   },
   "repository": {
