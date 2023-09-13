@@ -7,6 +7,7 @@ The project has a working environment configured and a unified coding style:
 ✅ Configured a linter for CSS/SASS code.
 ✅ Configured prettier for code formatting.
 ✅Linters are launched automatically before creating a commit.
+✅Webpack is used.
 
 **The game**
 
