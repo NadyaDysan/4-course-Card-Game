@@ -1,14 +1,13 @@
 {
     "compilerOptions": {
       "strict": false, // Выключает все жесткие проверки типов
-      "outDir": ".vercel_build_output",
+      "outDir": "./dist/",
       "noImplicitAny": true,
-      "module": "commonjs",
-      "target": "es2018",
-      "esModuleInterop": true,
+      "module": "es6",
+      "target": "es6",
       "allowJs": true,
       "sourceMap": true,
+      "esModuleInterop": true,
       "moduleResolution": "node"
-    },
-    "include": ["**/*.ts"]
+    }
   }
