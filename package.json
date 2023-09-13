@@ -5,12 +5,12 @@
   "main": "script.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open",
+    "build": "tsc",
+    "start": "node ./dist/application.js",
     "format": "prettier --write .",
     "lint:js": "eslint \"**.js\"",
     "lint:css": "stylelint './src/styles/**.css'",
     "lint": "npm run lint:js && npm run lint:css",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "lint:ts": "tsc --noEmit"
   },
   "repository": {
@@ -37,7 +37,9 @@
     "eslint-plugin-react": "^7.31.10",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
+    "pre-commit": "^1.2.2",
     "prettier": "^2.7.1",
+    "rimraf": "^5.0.1",
     "sass": "^1.56.1",
     "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",
