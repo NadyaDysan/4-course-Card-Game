@@ -10,7 +10,7 @@
     "lint:css": "stylelint './src/styles/**.css'",
     "lint": "npm run lint:js && npm run lint:css",
     "build": "tsc",
-    "start": "node ./dist/application.js",
+    "start": "node ./dist/script.js",
     "lint:ts": "tsc --noEmit"
   },
   "repository": {
