@@ -33,6 +33,9 @@ module.exports = {
   optimization: {
     minimizer: ["...", new CssMinimizerPlugin()],
   },
+  devServer: {
+  allowedHosts: ['all'],
+},
   devtool: process.env.NODE_ENV === "production" ? false : "source-map",
   output: {
     path: path.resolve(__dirname, "dist"),
