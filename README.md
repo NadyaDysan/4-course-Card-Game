@@ -1,5 +1,7 @@
 **A card remember game written in Type Script**
 
+You can play it here: https://memory-card-game-x9qz.onrender.com/
+
 **Working environment**
 The project has a working environment configured and a unified coding style:
  
