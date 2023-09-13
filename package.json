@@ -10,16 +10,9 @@
     "lint:js": "eslint \"**.js\"",
     "lint:css": "stylelint './src/styles/**.css'",
     "lint": "npm run lint:js && npm run lint:css",
-    "build": "rimraf dist && tsc",
-    "ts.check": "tsc --project tsconfig.json",
-    "add-build": "git add dist",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "lint:ts": "tsc --noEmit"
   },
-  "pre-commit": [
-    "ts.check",
-    "build",
-    "add-build"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NadyaDysan/4-course-Card-Game.git"
@@ -44,9 +37,7 @@
     "eslint-plugin-react": "^7.31.10",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
-    "pre-commit": "^1.2.2",
     "prettier": "^2.7.1",
-    "rimraf": "^5.0.1",
     "sass": "^1.56.1",
     "sass-loader": "^13.2.0",
     "style-loader": "^3.3.1",
