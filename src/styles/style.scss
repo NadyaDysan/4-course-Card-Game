@@ -22,6 +22,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  overflow: hidden;
 }
 
 .field-control {
@@ -92,7 +93,7 @@ body {
 .button {
   width: 246px;
   height: 50px;
-  margin-top: 67px;
+  margin-top: 34px;
   border: none;
   background: $buttonColor;
   border-radius: 12px;
