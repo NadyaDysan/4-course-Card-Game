@@ -1,23 +1,25 @@
-**A card remember game written in Type Script**
+**A card remember game written in Type Script (SPA)**
 
 You can play it here: https://memory-card-game-x9qz.onrender.com/
 
 **Working environment**
 The project has a working environment configured and a unified coding style:
  
-✅ Configured a linter for JS/TS code.
-✅ Configured a linter for CSS/SASS code.
-✅ Configured prettier for code formatting.
+✅ Configured a **linter** for JS/TS code.
+✅ Configured a **linter** for CSS/SASS code.
+✅ Configured **prettier** for code formatting.
 ✅Linters are launched automatically before creating a commit.
-✅Webpack is used.
+✅**Webpack** is used.
 
 **The game**
 
-✅ Layout corresponds to Figma layout (HTML/CSS).
+✅ Layout corresponds to **Figma** layout (HTML/CSS).
 ✅ The logic for selecting the difficulty level has been implemented.
 ✅ The logic for selecting and comparing cards has been implemented.
 ✅ The logic for displaying game results has been implemented.
-✅ TypeScript is integrated into the project.
+✅ **TypeScript** is integrated into the project.
+✅ Single page application (**SPA**).
+
 
 **Description of the game:**
 
